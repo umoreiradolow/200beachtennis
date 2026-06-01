@@ -186,7 +186,7 @@
     background:
       radial-gradient(120% 80% at 80% -10%, rgba(255,107,0,.20), transparent 55%),
       var(--navy);
-    color: #fff; position: relative; padding: 52px 0 64px; overflow: hidden;
+    color: #fff; position: relative; padding: 16px 0 48px; overflow: hidden;
   }
   /* faixa de areia/quadra sutil */
   .hero::after {
@@ -208,6 +208,83 @@
   .social-row { margin-top: 18px; display:flex; align-items:center; justify-content:center; gap:10px; font-size:.92rem; color:#cdd6e3; }
   .stars { color: var(--orange); letter-spacing: 2px; font-size: 1.05rem; }
 
+  /* ============ SCROLL DOWN INDICATOR ============ */
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 8px;
+  }
+  
+  .scroll-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: #aebacb;
+    text-transform: uppercase;
+    animation: fade-pulse 2s infinite ease-in-out;
+  }
+  
+  .triple-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 32px;
+    width: 20px;
+    position: relative;
+  }
+  
+  .triple-arrow .arrow-svg {
+    width: 18px;
+    height: 18px;
+    color: var(--orange);
+    opacity: 0;
+    position: absolute;
+    animation: arrow-scroll 1.6s infinite linear;
+  }
+  
+  .triple-arrow .arrow-svg:nth-child(1) {
+    animation-delay: 0s;
+    top: 0px;
+  }
+  
+  .triple-arrow .arrow-svg:nth-child(2) {
+    animation-delay: 0.25s;
+    top: 6px;
+  }
+  
+  .triple-arrow .arrow-svg:nth-child(3) {
+    animation-delay: 0.5s;
+    top: 12px;
+  }
+  
+  @keyframes fade-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes arrow-scroll {
+    0% {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.85);
+    }
+    30% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    60% {
+      opacity: 0.7;
+      transform: translateY(6px) scale(0.95);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.85);
+    }
+  }
+
   /* Responsive line breaks */
   .br-desktop { display: none; }
   @media (min-width: 760px) {
@@ -215,7 +292,7 @@
   }
 
   /* pilha de volumes (capas reais) */
-  .stack { position: relative; display:grid; place-items:center; min-height: 360px; padding-bottom: 30px; }
+  .stack { position: relative; display:grid; place-items:center; min-height: 280px; padding-bottom: 20px; margin-top: -10px; }
   .stack-inner { position: relative; width: min(320px, 72vw); aspect-ratio: 4/3.4; }
   .vol {
     position: absolute; left: 50%; width:44%; aspect-ratio:1792/2400; border-radius: 4px 8px 8px 4px;
@@ -391,11 +468,401 @@
   .modal-close { position:absolute; top:14px; right:16px; width:34px; height:34px; border:0; background:var(--paper-gray); border-radius:50%; font-size:1.4rem; color:var(--ink); cursor:pointer; line-height:1; display:grid; place-items:center; }
   .modal-close:hover { background:var(--line); }
 
+  /* ============ PLANS/PRICING CARDS ============ */
+  .plans-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    max-width: 960px;
+    margin: 40px auto 0;
+    padding-inline: 10px;
+  }
+  
+  .plan-card {
+    background: #fff;
+    border: 2px solid var(--line);
+    border-radius: 20px;
+    padding: 40px 24px;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(13,33,55,0.12);
+  }
+  
+  /* Highlight Complete Package */
+  .plan-card.popular {
+    border-color: var(--orange);
+    background: #FFF6EE; /* Laranja bem sutil */
+    box-shadow: 0 15px 35px rgba(255, 107, 0, 0.15); /* Sombra laranja, sem shade preto */
+  }
+  
+  .plan-card.popular:hover {
+    box-shadow: 0 25px 50px rgba(255, 107, 0, 0.25);
+  }
+  
+  .popular-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(255,107,0,0.35);
+    white-space: nowrap;
+  }
+  
+  .plan-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.45rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .plan-card.popular .plan-name {
+    color: var(--orange-dark);
+  }
+  
+  .plan-desc {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  
+  .plan-price-box {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .plan-price-was {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .plan-price-now {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3.4rem;
+    color: var(--navy);
+    line-height: 1;
+  }
+  
+  .plan-price-now small {
+    font-size: 1.3rem;
+    font-weight: 800;
+    vertical-align: super;
+  }
+  
+  .plan-price-now span {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  
+  .plan-card.popular .plan-price-now {
+    color: var(--orange);
+  }
+  
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-grow: 1;
+  }
+  
+  .plan-feature-item {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .plan-feature-icon {
+    flex-shrink: 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+  
+  .plan-feature-item.highlight {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  
+  .plan-feature-item.bonus-feat {
+    color: var(--orange-dark);
+    font-weight: 600;
+  }
+  
+  .plan-card .btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+  }
+  
+  @media (min-width: 760px) {
+    .plans-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+  }
+
+  /* ============ POPUP ORDER BUMP ============ */
+  .bump-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999999;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .bump-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .bump-modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    padding: 30px 20px 24px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .bump-overlay.open .bump-modal {
+    transform: scale(1);
+  }
+  
+  .bump-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: var(--paper-gray);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--ink);
+    cursor: pointer;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease;
+  }
+  
+  .bump-close:hover {
+    background: var(--line);
+  }
+  
+  .bump-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.25);
+  }
+  
+  .bump-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  
+  .bump-subtitle {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    padding-inline: 10px;
+  }
+  
+  .bump-box {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 20px 16px;
+    color: #fff;
+    margin-bottom: 24px;
+    text-align: left;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .bump-features-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+  
+  .bump-features-list li {
+    font-size: 0.82rem;
+    color: #e2e8f0;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .bump-features-list li.highlight-main {
+    font-size: 0.88rem;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  
+  .bump-icon {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  
+  .bump-price-block {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 14px;
+  }
+  
+  .bump-price-was {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    color: #a0aec0;
+    text-decoration: line-through;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .bump-price-now {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--orange);
+    line-height: 1;
+    display: block;
+  }
+  
+  .bump-price-micro {
+    font-size: 0.68rem;
+    color: #a0aec0;
+    margin-top: 4px;
+    display: block;
+  }
+  
+  .bump-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .btn-bump-primary {
+    width: 100%;
+    max-width: 100%;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 16px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+    transition: transform 0.2s ease, background 0.2s ease;
+    line-height: 1.3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-bump-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+  }
+  
+  .btn-bump-secondary {
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+    border: 1.5px solid var(--line);
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    padding: 12px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-bump-secondary:hover {
+    background: var(--paper-gray);
+    color: var(--ink);
+  }
+
   /* ============ DESKTOP ============ */
   @media (min-width: 760px) {
     section { padding: 84px 0; }
     .hero { padding: 72px 0 90px; }
     .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 50px; }
+    .hero-copy { grid-column: 1; grid-row: 1; text-align: left; }
+    .hero-cta { justify-content: flex-start; }
+    .social-row { justify-content: flex-start; }
+    .stack { grid-column: 2; grid-row: 1; min-height: 360px; padding-bottom: 30px; margin-top: 0; }
     .hero h1 { font-size: clamp(2.6rem, 4vw, 3.5rem); }
     .vol-grid { justify-content: center; }
     .tcards { grid-template-columns: repeat(3, 1fr); }
@@ -408,12 +875,24 @@
 <header class="hero" data-screen-label="Hero">
   <div class="wrap">
     <div class="hero-grid">
+      <!-- MOCKUP: pilha dos 5 volumes (colocado em cima no mobile) -->
+      <div class="stack" aria-label="Os 5 volumes do kit">
+        <div class="stack-inner">
+          <div class="vol v1" role="img" aria-label="Volume 1 — Primeiros Passos na Areia"></div>
+          <div class="vol v2" role="img" aria-label="Volume 2 — Construindo o Jogo"></div>
+          <div class="vol v3" role="img" aria-label="Volume 3 — Dominando a Quadra"></div>
+          <div class="vol v4" role="img" aria-label="Volume 4 — Alto Nível"></div>
+          <div class="vol v5" role="img" aria-label="Volume 5 — Mentalidade de Competição"></div>
+          <div class="stack-badge">200 treinos</div>
+        </div>
+      </div>
+
       <div class="hero-copy">
         <p class="eyebrow" style="color:var(--orange)">Kit com 5 ebooks · 200 treinos</p>
         <h1>Pare de Improvisar na Quadra<br class="br-desktop" /> <span class="hl">200 Treinos de Beach Tennis</span><br class="br-desktop" /> Prontos para Aplicar Hoje</h1>
         <p class="sub">5 volumes organizados por nível, do iniciante ao avançado. Abra o material, escolha o treino pela turma e aplique na mesma hora — sem perder horas planejando.</p>
         <div class="hero-cta">
-          <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-orange pulse">Quero os 200 Treinos</a>
+          <a href="#precos" class="btn btn-orange pulse">Quero os 200 Treinos</a>
         </div>
         <div class="micro">
           <span>✓ <b>Acesso imediato</b></span>
@@ -424,17 +903,21 @@
           <span class="stars">★★★★★</span>
           <span>Mais de <b style="color:#fff">125</b> professores já utilizam</span>
         </div>
-      </div>
-
-      <!-- MOCKUP: pilha dos 5 volumes (placeholder em CSS — pode trocar por imagem real depois) -->
-      <div class="stack" aria-label="Os 5 volumes do kit">
-        <div class="stack-inner">
-          <div class="vol v1" role="img" aria-label="Volume 1 — Primeiros Passos na Areia"></div>
-          <div class="vol v2" role="img" aria-label="Volume 2 — Construindo o Jogo"></div>
-          <div class="vol v3" role="img" aria-label="Volume 3 — Dominando a Quadra"></div>
-          <div class="vol v4" role="img" aria-label="Volume 4 — Alto Nível"></div>
-          <div class="vol v5" role="img" aria-label="Volume 5 — Mentalidade de Competição"></div>
-          <div class="stack-badge">200 treinos</div>
+        
+        <!-- INDICADOR DE ROLAGEM COM TRIPO SETA ANIMADA -->
+        <div class="scroll-indicator">
+          <span class="scroll-text">ROLE PARA BAIXO</span>
+          <div class="triple-arrow">
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -590,38 +1073,116 @@
   </div>
 </section>
 
-<!-- ================= 6. OFERTA STACK ================= -->
-<section class="offer" data-screen-label="Oferta">
+<!-- ================= 6. PLANOS E PREÇOS ================= -->
+<section class="offer" id="precos" data-screen-label="Oferta">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow" style="color:var(--orange)">A oferta completa</p>
-      <h2>Tudo Que Você Leva Hoje</h2>
+      <p class="eyebrow" style="color:var(--orange)">Escolha seu pacote</p>
+      <h2>Kits Disponíveis Prontos Para Aplicar</h2>
+      <p>Selecione a melhor opção para a sua carreira como treinador de Beach Tennis.</p>
     </div>
-    <div class="stack-box">
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Vol. 1</b> — Primeiros Passos na Areia · 40 treinos</span><span class="pr">R$27</span></div>
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Vol. 2</b> — Construindo o Jogo · 40 treinos</span><span class="pr">R$27</span></div>
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Vol. 3</b> — Dominando a Quadra · 40 treinos</span><span class="pr">R$27</span></div>
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Vol. 4</b> — Alto Nível · 40 treinos</span><span class="pr">R$27</span></div>
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Vol. 5</b> — Mentalidade de Competição · 40 treinos</span><span class="pr">R$27</span></div>
-      <div class="stack-line"><span class="ck">✓</span><span class="it"><b>Bônus</b> — Planilha de Planejamento Semanal</span><span class="pr">R$37</span></div>
-
-      <div class="stack-sep"></div>
-
-      <div class="price-block">
-        <span class="was">Valor total: R$172</span>
-        <span class="today">Hoje, no lançamento, por apenas</span>
-        <span class="now"><small>R$</small>10<small>,00</small></span>
-      </div>
-
-      <div class="offer-cta">
-        <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-orange pulse">Quero Meu Kit Agora</a>
-        <div class="secure-row">
-          <span>🔒 Pagamento seguro</span>
-          <span>⚡ Acesso imediato</span>
-          <span>💳 Cartão, Pix ou Boleto</span>
+    
+    <div class="plans-container">
+      <!-- PLAN 1: PACOTE SIMPLES -->
+      <article class="plan-card">
+        <h3 class="plan-name">PACOTE SIMPLES</h3>
+        <p class="plan-desc">O essencial para parar de improvisar na areia e economizar tempo.</p>
+        
+        <div class="plan-price-box">
+          <span class="plan-price-was">De R$ 49,90 por apenas</span>
+          <span class="plan-price-now"><small>R$</small>10<small>,00</small></span>
         </div>
-        <p class="offer-micro">Preço promocional de lançamento — pode aumentar a qualquer momento.</p>
-      </div>
+        
+        <ul class="plan-features">
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>5 Volumes Completos</b> (200 treinos)</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Vol. 1 — Primeiros Passos na Areia</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Vol. 2 — Construindo o Jogo</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Vol. 3 — Dominando a Quadra</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Vol. 4 — Alto Nível</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Vol. 5 — Mentalidade de Competição</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Planilha de Planejamento Semanal</span>
+          </li>
+          <li class="plan-feature-item">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span>Acesso vitalício aos arquivos</span>
+          </li>
+        </ul>
+        
+        <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-orange">Adquirir Pacote Simples</a>
+      </article>
+
+      <!-- PLAN 2: PACOTE COMPLETO -->
+      <article class="plan-card popular">
+        <div class="popular-badge">O Mais Recomendado</div>
+        <h3 class="plan-name">PACOTE COMPLETO</h3>
+        <p class="plan-desc">O kit definitivo do professor de elite com bônus e atualizações.</p>
+        
+        <div class="plan-price-box">
+          <span class="plan-price-was">De R$ 124,90 por apenas</span>
+          <span class="plan-price-now"><small>R$</small>24<small>,90</small></span>
+        </div>
+        
+        <ul class="plan-features">
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Todos os 5 volumes originais</b> (200 treinos)</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Planilha de Planejamento Semanal</b></span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Acesso vitalício</b> aos arquivos</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 1</b> - Guia de correção (30 Erros Técnicos)</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 2</b> - 30 Exercícios com Cesto de Bolas</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 3</b> - Plano de 30 Dias para Iniciantes</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 4</b> - Guia da Aula Experimental Perfeita</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 5</b> - Fichas de Avaliação Imprimíveis</span>
+          </li>
+          <li class="plan-feature-item bonus-feat">
+            <span class="plan-feature-icon">⭐</span>
+            <span><b>Atualizações mensais</b> inclusas</span>
+          </li>
+        </ul>
+        
+        <a href="https://pay.wiapy.com/XZbu1wrzIt" class="btn btn-orange pulse">Adquirir Pacote Completo</a>
+      </article>
     </div>
   </div>
 </section>
@@ -680,7 +1241,7 @@
     <h2>200 Treinos Prontos. R$10. Acesso Agora.</h2>
     <p>5 volumes do iniciante ao avançado, mais 2 planilhas profissionais de bônus. Pare de improvisar e economize horas de planejamento toda semana.</p>
     <div class="btn-wrap">
-      <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-white">Garantir Meu Kit Agora</a>
+      <a href="#precos" class="btn btn-white">Garantir Meu Kit Agora</a>
     </div>
     <p class="final-micro">Acesso imediato • Garantia de 7 dias • Preço de lançamento</p>
   </div>
@@ -731,6 +1292,46 @@
   </div>
 </div>
 
+<!-- ================= POPUP ORDER BUMP ================= -->
+<div class="bump-overlay" id="bumpPopup">
+  <div class="bump-modal">
+    <button class="bump-close" id="bumpCloseBtn" aria-label="Fechar">&times;</button>
+    
+    <span class="bump-badge">OFERTA ESPECIAL — SÓ AGORA</span>
+    
+    <h3 class="bump-title">Antes de continuar...</h3>
+    <p class="bump-subtitle">Que tal levar o Pacote Completo por apenas R$14,90?</p>
+    
+    <div class="bump-box">
+      <ul class="bump-features-list">
+        <li class="highlight-main"><span class="bump-icon">✅</span> <b>200 Treinos de Beach Tennis (5 Volumes)</b></li>
+        <li><span class="bump-icon">🎁</span> Bônus 1 — Guia de correção (30 Erros Técnicos)</li>
+        <li><span class="bump-icon">🎁</span> Bônus 2 — 30 Exercícios com Cesto de Bolas</li>
+        <li><span class="bump-icon">🎁</span> Bônus 3 — Plano de 30 Dias para Iniciantes</li>
+        <li><span class="bump-icon">🎁</span> Bônus 4 — Guia da Aula Experimental Perfeita</li>
+        <li><span class="bump-icon">🎁</span> Bônus 5 — Fichas de Avaliação Imprimíveis</li>
+        <li><span class="bump-icon">🎁</span> Bônus 6 — Planilha de Planejamento Semanal</li>
+        <li><span class="bump-icon">⭐</span> <b>Atualizações Mensais Inclusas</b></li>
+      </ul>
+      
+      <div class="bump-price-block">
+        <span class="bump-price-was">De R$24,90</span>
+        <span class="bump-price-now">R$14,90</span>
+        <span class="bump-price-micro">Acesso imediato · Garantia de 7 dias</span>
+      </div>
+    </div>
+    
+    <div class="bump-actions">
+      <a href="https://pay.wiapy.com/fA7KgTWvlR" id="bumpUpgradeBtn" class="btn-bump-primary">
+        ✅ SIM, QUERO O PACOTE COMPLETO POR R$14,90
+      </a>
+      <a href="https://pay.wiapy.com/nOAteXXYq8" id="bumpDeclineBtn" class="btn-bump-secondary">
+        Não, prefiro só o Pacote Simples por R$10,00
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- ================= JS MÍNIMO — ACCORDION ================= -->
 <script>
   document.querySelectorAll('.acc-q').forEach(function (q) {
@@ -767,31 +1368,141 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModals(); });
 
-  // Rastreamento Automático de InitiateCheckout em cliques nos CTAs
-  document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function (btn) {
+  // ================= RASTREAMENTO E BUMP POPUP =================
+  
+  // Função unificada de Rastreamento de InitiateCheckout
+  function trackCheckout(planId) {
+    var planValue = 10.00;
+    var planName = 'Pacote Simples - 200 Treinos';
+    var planCode = 'pacote-simples-bt';
+    
+    if (planId === 'completo') {
+      planValue = 24.90;
+      planName = 'Pacote Completo - 200 Treinos + Bônus';
+      planCode = 'pacote-completo-bt';
+    } else if (planId === 'downsell') {
+      planValue = 14.90;
+      planName = 'Order Bump Pacote Completo - 200 Treinos + Bônus';
+      planCode = 'order-bump-completo-bt';
+    }
+
+    // 1. Dispara no Meta Pixel
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        value: planValue,
+        currency: 'BRL'
+      });
+    }
+    
+    // 2. Dispara no Google Analytics 4 (begin_checkout)
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', {
+        currency: 'BRL',
+        value: planValue,
+        items: [{
+          item_id: planCode,
+          item_name: planName,
+          price: planValue,
+          quantity: 1
+        }]
+      });
+    }
+    
+    // 3. Dispara no Utimify
+    if (typeof utimify === 'object' && typeof utimify.track === 'function') {
+      utimify.track('InitiateCheckout');
+    }
+  }
+
+  // Elementos do Popup
+  var bumpPopup = document.getElementById('bumpPopup');
+  
+  function openBumpPopup() {
+    if (bumpPopup) {
+      bumpPopup.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeBumpPopupAndRedirect() {
+    if (bumpPopup) {
+      bumpPopup.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    // Rastrear InitiateCheckout para o Pacote Simples antes de ir para o checkout
+    trackCheckout('simples');
+    
+    // Redireciona para o checkout do Pacote Simples
+    window.location.href = 'https://pay.wiapy.com/nOAteXXYq8';
+  }
+
+  // Interceptar cliques em botões do Pacote Simples
+  document.querySelectorAll('a[href*="nOAteXXYq8"]').forEach(function(btn) {
+    // Evita interceptar o botão de recusar dentro do próprio popup
+    if (btn.closest('#bumpPopup')) return;
+    
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openBumpPopup();
+    });
+  });
+
+  // Fechar o popup e ir para o simples clicando no X
+  var bumpCloseBtn = document.getElementById('bumpCloseBtn');
+  if (bumpCloseBtn) {
+    bumpCloseBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeBumpPopupAndRedirect();
+    });
+  }
+
+  // Fechar clicando fora do popup (no overlay)
+  if (bumpPopup) {
+    bumpPopup.addEventListener('click', function(e) {
+      if (e.target === bumpPopup) {
+        closeBumpPopupAndRedirect();
+      }
+    });
+  }
+
+  // Botão 2 — recusar oferta do completo e comprar o simples
+  var bumpDeclineBtn = document.getElementById('bumpDeclineBtn');
+  if (bumpDeclineBtn) {
+    bumpDeclineBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeBumpPopupAndRedirect();
+    });
+  }
+
+  // Rastreamento nos botões que levam direto ao checkout
+  // 1. Pacote Completo (Card)
+  document.querySelectorAll('a[href*="XZbu1wrzIt"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      // 1. Dispara no Meta Pixel
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout');
-      }
-      
-      // 2. Dispara no Google Analytics 4 (begin_checkout)
-      if (typeof gtag === 'function') {
-        gtag('event', 'begin_checkout', {
-          currency: 'BRL',
-          value: 10.00,
-          items: [{
-            item_id: '200-treinos-bt',
-            item_name: '200 Treinos de Beach Tennis',
-            price: 10.00,
-            quantity: 1
-          }]
+      trackCheckout('completo');
+    });
+  });
+
+  // 2. Order Bump Completo (Botão de aceitar do popup)
+  var bumpUpgradeBtn = document.getElementById('bumpUpgradeBtn');
+  if (bumpUpgradeBtn) {
+    bumpUpgradeBtn.addEventListener('click', function () {
+      trackCheckout('downsell');
+    });
+  }
+
+  // Interceptar cliques em links que levam à seção de preços e alinhar a tabela de planos
+  document.querySelectorAll('a[href*="#precos"]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector('.plans-container');
+      if (target) {
+        var elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        var offsetPosition = elementPosition - 20; // 20px de espaçamento no topo para mostrar o simples e o início do completo
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
         });
-      }
-      
-      // 3. Dispara no Utimify
-      if (typeof utimify === 'object' && typeof utimify.track === 'function') {
-        utimify.track('InitiateCheckout');
       }
     });
   });
