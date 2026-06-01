@@ -1436,16 +1436,22 @@
     window.location.href = 'https://pay.wiapy.com/nOAteXXYq8';
   }
 
-  // Interceptar cliques em botões do Pacote Simples
-  document.querySelectorAll('a[href*="nOAteXXYq8"]').forEach(function(btn) {
-    // Evita interceptar o botão de recusar dentro do próprio popup
-    if (btn.closest('#bumpPopup')) return;
+  // Interceptar cliques em botões do Pacote Simples (Event Delegation robusto com fase de captura)
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('a');
+    if (!btn) return;
     
-    btn.addEventListener('click', function(e) {
+    // Se o link contiver o checkout do Pacote Simples
+    if (btn.getAttribute('href') && btn.getAttribute('href').indexOf('nOAteXXYq8') !== -1) {
+      // Se o botão estiver dentro do popup, não intercepta (deixa seguir o fluxo normal de recusa)
+      if (btn.closest('#bumpPopup')) return;
+      
+      // Cancela a navegação padrão e impede que outros scripts/UTMify capturem o evento
       e.preventDefault();
+      e.stopPropagation();
       openBumpPopup();
-    });
-  });
+    }
+  }, true); // 'true' ativa a fase de captura para interceptar ANTES de qualquer outro script
 
   // Fechar o popup e ir para o simples clicando no X
   var bumpCloseBtn = document.getElementById('bumpCloseBtn');
