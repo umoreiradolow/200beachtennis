@@ -931,6 +931,32 @@
     .vol-grid { justify-content: center; }
     .tcards { grid-template-columns: repeat(3, 1fr); }
   }
+
+  /* Secure Trust Badges under Plans Card */
+  .plans-secure-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .plans-secure-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #FF5A79; /* Coral pink matching the screenshot */
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .plans-secure-item svg {
+    flex-shrink: 0;
+    stroke: #FF5A79; /* Coral pink stroke */
+  }
 </style>
 </head>
 <body>
@@ -965,7 +991,7 @@
         </div>
         <div class="social-row">
           <span class="stars">★★★★★</span>
-          <span>Mais de <b style="color:#fff">125</b> professores já utilizam</span>
+          <span>Mais de <b style="color:#fff">317</b> professores já utilizam</span>
         </div>
         
         <!-- INDICADOR DE ROLAGEM COM TRIPO SETA ANIMADA -->
@@ -1141,69 +1167,23 @@
 <section class="offer" id="precos" data-screen-label="Oferta">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow" style="color:var(--orange)">Escolha seu pacote</p>
-      <h2>Kits Disponíveis Prontos Para Aplicar</h2>
-      <p>Selecione a melhor opção para a sua carreira como treinador de Beach Tennis.</p>
+      <p class="eyebrow" style="color:var(--orange)">Aproveite a Promoção</p>
+      <h2>Adquira Seu Kit Completo</h2>
+      <p>Tenha acesso imediato a todos os volumes de treinos e bônus exclusivos.</p>
     </div>
     
-    <div class="plans-container">
-      <!-- PLAN 1: PACOTE SIMPLES -->
-      <article class="plan-card">
-        <h3 class="plan-name">PACOTE SIMPLES</h3>
-        <p class="plan-desc">O essencial para parar de improvisar na areia e economizar tempo.</p>
-        
-        <div class="plan-price-box">
-          <span class="plan-price-was">De R$ 49,90 por apenas</span>
-          <span class="plan-price-now"><small>R$</small>10<small>,00</small></span>
-        </div>
-        
-        <ul class="plan-features">
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span><b>5 Volumes Completos</b> (200 treinos)</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Vol. 1 — Primeiros Passos na Areia</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Vol. 2 — Construindo o Jogo</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Vol. 3 — Dominando a Quadra</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Vol. 4 — Alto Nível</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Vol. 5 — Mentalidade de Competição</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Planilha de Planejamento Semanal</span>
-          </li>
-          <li class="plan-feature-item">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span>Acesso vitalício aos arquivos</span>
-          </li>
-        </ul>
-        
-        <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-orange">Adquirir Pacote Simples</a>
-      </article>
-
-      <!-- PLAN 2: PACOTE COMPLETO -->
-      <article class="plan-card popular">
+    <div class="plans-container" style="display: flex; justify-content: center; max-width: 520px; margin: 40px auto 0; padding-inline: 10px;">
+      <!-- SINGLE PLAN CARD: PACOTE COMPLETO -->
+      <article class="plan-card popular" style="width: 100%; margin: 0;">
         <div class="popular-badge">O Mais Recomendado</div>
         <h3 class="plan-name">PACOTE COMPLETO</h3>
         <p class="plan-desc">O kit definitivo do professor de elite com bônus e atualizações.</p>
         
         <div class="plan-price-box">
-          <span class="plan-price-was">De R$ 124,90 por apenas</span>
-          <span class="plan-price-now"><small>R$</small>24<small>,90</small></span>
+          <span class="plan-price-badge" style="display: inline-block; background: #FF6B00; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; text-transform: uppercase;">OFERTA ÚNICA: 70% OFF</span>
+          <span class="plan-price-was">De R$ 67,00 por apenas</span>
+          <span class="plan-price-now"><small>R$</small>17<small>,90</small></span>
+          <span class="plan-price-micro" style="display: block; font-size: 0.82rem; color: var(--ink-soft); margin-top: 6px; font-weight: 500;">Pagamento Único • Sem Taxas Extras</span>
         </div>
         
         <ul class="plan-features">
@@ -1245,7 +1225,20 @@
           </li>
         </ul>
         
-        <a href="https://pay.wiapy.com/XZbu1wrzIt" class="btn btn-orange pulse">Adquirir Pacote Completo</a>
+        <!-- SUBSTITUA PELO SEU LINK DE CHECKOUT DE R$ 17,90 -->
+        <a href="https://pay.wiapy.com/a5BsOmjGmK" class="btn btn-orange pulse">Adquirir Pacote Completo</a>
+
+        <!-- Secure/Instant badges matching the user screenshot -->
+        <div class="plans-secure-row">
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+            <span>SEGURO</span>
+          </div>
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>INSTANTÂNEO</span>
+          </div>
+        </div>
       </article>
     </div>
   </div>
@@ -1302,7 +1295,7 @@
 <!-- ================= 9. CTA FINAL ================= -->
 <section class="final" data-screen-label="CTA Final">
   <div class="wrap">
-    <h2>200 Treinos Prontos. R$10. Acesso Agora.</h2>
+    <h2>200 Treinos Prontos. R$17,90. Acesse agora.</h2>
     <p>5 volumes do iniciante ao avançado, mais 2 planilhas profissionais de bônus. Pare de improvisar e economize horas de planejamento toda semana.</p>
     <div class="btn-wrap">
       <a href="#precos" class="btn btn-white">Garantir Meu Kit Agora</a>
@@ -1355,47 +1348,6 @@
     <p>E-mail: <a href="mailto:Moreira.digital2026@gmail.com">Moreira.digital2026@gmail.com</a></p>
   </div>
 </div>
-
-<!-- ================= POPUP ORDER BUMP ================= -->
-<div class="bump-overlay" id="bumpPopup">
-  <div class="bump-modal">
-    <button class="bump-close" id="bumpCloseBtn" aria-label="Fechar">&times;</button>
-    
-    <span class="bump-badge">OFERTA ESPECIAL — SÓ AGORA</span>
-    
-    <h3 class="bump-title">Antes de continuar...</h3>
-    <p class="bump-subtitle">Que tal levar o Pacote Completo por apenas R$14,90?</p>
-    
-    <div class="bump-box">
-      <ul class="bump-features-list">
-        <li class="highlight-main"><span class="bump-icon">✅</span> <b>200 Treinos de Beach Tennis (5 Volumes)</b></li>
-        <li><span class="bump-icon">🎁</span> Bônus 1 — Guia de correção (30 Erros Técnicos)</li>
-        <li><span class="bump-icon">🎁</span> Bônus 2 — 30 Exercícios com Cesto de Bolas</li>
-        <li><span class="bump-icon">🎁</span> Bônus 3 — Plano de 30 Dias para Iniciantes</li>
-        <li><span class="bump-icon">🎁</span> Bônus 4 — Guia da Aula Experimental Perfeita</li>
-        <li><span class="bump-icon">🎁</span> Bônus 5 — Fichas de Avaliação Imprimíveis</li>
-        <li><span class="bump-icon">🎁</span> Bônus 6 — Planilha de Planejamento Semanal</li>
-        <li><span class="bump-icon">⭐</span> <b>Atualizações Mensais Inclusas</b></li>
-      </ul>
-      
-      <div class="bump-price-block">
-        <span class="bump-price-was">De R$24,90</span>
-        <span class="bump-price-now">R$14,90</span>
-        <span class="bump-price-micro">Acesso imediato · Garantia de 7 dias</span>
-      </div>
-    </div>
-    
-    <div class="bump-actions">
-      <a href="https://pay.wiapy.com/fA7KgTWvlR" id="bumpUpgradeBtn" class="btn-bump-primary">
-        ✅ SIM, QUERO O PACOTE COMPLETO POR R$14,90
-      </a>
-      <a href="https://pay.wiapy.com/nOAteXXYq8" id="bumpDeclineBtn" class="btn-bump-secondary">
-        Não, prefiro só o Pacote Simples por R$10,00
-      </a>
-    </div>
-  </div>
-</div>
-
 <!-- ================= JS MÍNIMO — ACCORDION ================= -->
 <script>
   document.querySelectorAll('.acc-q').forEach(function (q) {
@@ -1432,23 +1384,13 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModals(); });
 
-  // ================= RASTREAMENTO E BUMP POPUP =================
+  // ================= RASTREAMENTO E ROLAGEM =================
   
-  // Função unificada de Rastreamento de InitiateCheckout
-  function trackCheckout(planId) {
-    var planValue = 10.00;
-    var planName = 'Pacote Simples - 200 Treinos';
-    var planCode = 'pacote-simples-bt';
-    
-    if (planId === 'completo') {
-      planValue = 24.90;
-      planName = 'Pacote Completo - 200 Treinos + Bônus';
-      planCode = 'pacote-completo-bt';
-    } else if (planId === 'downsell') {
-      planValue = 14.90;
-      planName = 'Order Bump Pacote Completo - 200 Treinos + Bônus';
-      planCode = 'order-bump-completo-bt';
-    }
+  // Função unificada de Rastreamento de InitiateCheckout (Oferta Única de R$ 17,90)
+  function trackCheckout() {
+    var planValue = 17.90;
+    var planName = 'Pacote Completo - 200 Treinos + Bônus';
+    var planCode = 'pacote-completo-bt';
 
     // 1. Dispara no Meta Pixel
     if (typeof fbq === 'function') {
@@ -1478,87 +1420,12 @@
     }
   }
 
-  // Elementos do Popup
-  var bumpPopup = document.getElementById('bumpPopup');
-  
-  function openBumpPopup() {
-    if (bumpPopup) {
-      bumpPopup.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeBumpPopupAndRedirect() {
-    if (bumpPopup) {
-      bumpPopup.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    // Rastrear InitiateCheckout para o Pacote Simples antes de ir para o checkout
-    trackCheckout('simples');
-    
-    // Redireciona para o checkout do Pacote Simples
-    window.location.href = 'https://pay.wiapy.com/nOAteXXYq8';
-  }
-
-  // Interceptar cliques em botões do Pacote Simples (Event Delegation robusto com fase de captura)
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('a');
-    if (!btn) return;
-    
-    // Se o link contiver o checkout do Pacote Simples
-    if (btn.getAttribute('href') && btn.getAttribute('href').indexOf('nOAteXXYq8') !== -1) {
-      // Se o botão estiver dentro do popup, não intercepta (deixa seguir o fluxo normal de recusa)
-      if (btn.closest('#bumpPopup')) return;
-      
-      // Cancela a navegação padrão e impede que outros scripts/UTMify capturem o evento
-      e.preventDefault();
-      e.stopPropagation();
-      openBumpPopup();
-    }
-  }, true); // 'true' ativa a fase de captura para interceptar ANTES de qualquer outro script
-
-  // Fechar o popup e ir para o simples clicando no X
-  var bumpCloseBtn = document.getElementById('bumpCloseBtn');
-  if (bumpCloseBtn) {
-    bumpCloseBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeBumpPopupAndRedirect();
-    });
-  }
-
-  // Fechar clicando fora do popup (no overlay)
-  if (bumpPopup) {
-    bumpPopup.addEventListener('click', function(e) {
-      if (e.target === bumpPopup) {
-        closeBumpPopupAndRedirect();
-      }
-    });
-  }
-
-  // Botão 2 — recusar oferta do completo e comprar o simples
-  var bumpDeclineBtn = document.getElementById('bumpDeclineBtn');
-  if (bumpDeclineBtn) {
-    bumpDeclineBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeBumpPopupAndRedirect();
-    });
-  }
-
-  // Rastreamento nos botões que levam direto ao checkout
-  // 1. Pacote Completo (Card)
-  document.querySelectorAll('a[href*="XZbu1wrzIt"]').forEach(function (btn) {
+  // Rastreamento nos botões que levam ao checkout
+  document.querySelectorAll('a[href*="pay.wiapy.com"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      trackCheckout('completo');
+      trackCheckout();
     });
   });
-
-  // 2. Order Bump Completo (Botão de aceitar do popup)
-  var bumpUpgradeBtn = document.getElementById('bumpUpgradeBtn');
-  if (bumpUpgradeBtn) {
-    bumpUpgradeBtn.addEventListener('click', function () {
-      trackCheckout('downsell');
-    });
-  }
 
   // Interceptar cliques em links que levam à seção de preços e alinhar a tabela de planos
   document.querySelectorAll('a[href*="#precos"]').forEach(function(btn) {
@@ -1567,7 +1434,7 @@
       var target = document.querySelector('.plans-container');
       if (target) {
         var elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-        var offsetPosition = elementPosition - 20; // 20px de espaçamento no topo para mostrar o simples e o início do completo
+        var offsetPosition = elementPosition - 20; // 20px de espaçamento no topo para enquadrar perfeitamente
         
         window.scrollTo({
           top: offsetPosition,
