@@ -931,6 +931,61 @@
     .vol-grid { justify-content: center; }
     .tcards { grid-template-columns: repeat(3, 1fr); }
   }
+
+  /* Secure Trust Badges under Plans Card */
+  .plans-secure-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .plans-secure-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #FF5A79; /* Coral pink matching the screenshot */
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .plans-secure-item svg {
+    flex-shrink: 0;
+    stroke: #FF5A79; /* Coral pink stroke */
+  }
+
+  /* ============ NARRATIVE BRIDGE ============ */
+  .narrative-bridge {
+    background: #FFF9F5; /* A very light warm peach background matching the theme */
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+  }
+  .narrative-content {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding-inline: 20px;
+  }
+  .narrative-quote {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .narrative-text {
+    font-size: clamp(0.98rem, 4vw, 1.08rem);
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -939,24 +994,12 @@
 <header class="hero" data-screen-label="Hero">
   <div class="wrap">
     <div class="hero-grid">
-      <!-- MOCKUP: pilha dos 5 volumes (colocado em cima no mobile) -->
-      <div class="stack" aria-label="Os 5 volumes do kit">
-        <div class="stack-inner">
-          <div class="vol v1" role="img" aria-label="Volume 1 — Primeiros Passos na Areia"></div>
-          <div class="vol v2" role="img" aria-label="Volume 2 — Construindo o Jogo"></div>
-          <div class="vol v3" role="img" aria-label="Volume 3 — Dominando a Quadra"></div>
-          <div class="vol v4" role="img" aria-label="Volume 4 — Alto Nível"></div>
-          <div class="vol v5" role="img" aria-label="Volume 5 — Mentalidade de Competição"></div>
-          <div class="stack-badge">200 treinos</div>
-        </div>
-      </div>
-
       <div class="hero-copy">
-        <p class="eyebrow" style="color:var(--orange)">Kit com 5 ebooks · 200 treinos</p>
-        <h1>Pare de Improvisar na Quadra<br class="br-desktop" /> <span class="hl">200 Treinos de Beach Tennis</span><br class="br-desktop" /> Prontos para Aplicar Hoje</h1>
-        <p class="sub">5 volumes organizados por nível, do iniciante ao avançado. Abra o material, escolha o treino pela turma e aplique na mesma hora — sem perder horas planejando.</p>
+        <p class="eyebrow" style="color:var(--orange)">O Método Europeu Usado na Itália e Espanha para Reter Alunos</p>
+        <h1>O Verdadeiro Motivo Pelo Qual Seus Alunos Somem da Quadra Sem Falar Nada... <br class="br-desktop" /><span class="hl">E Como Resolver Isso Hoje.</span></h1>
+        <p class="sub">Você sabe que é um bom professor. Mas se as suas aulas forem sempre as mesmas, eles vão embora. Tenha em mãos 200 treinos prontos, organizados por nível, e transforme cada aula em um evento dinâmico que ninguém quer faltar.</p>
         <div class="hero-cta">
-          <a href="#precos" class="btn btn-orange pulse">Quero os 200 Treinos</a>
+          <a href="#precos" class="btn btn-orange pulse">Quero Reter Meus Alunos e Variar Minhas Aulas</a>
         </div>
         <div class="micro">
           <span>✓ <b>Acesso imediato</b></span>
@@ -965,7 +1008,7 @@
         </div>
         <div class="social-row">
           <span class="stars">★★★★★</span>
-          <span>Mais de <b style="color:#fff">125</b> professores já utilizam</span>
+          <span>Mais de <b style="color:#fff">317</b> professores já utilizam</span>
         </div>
         
         <!-- INDICADOR DE ROLAGEM COM TRIPO SETA ANIMADA -->
@@ -984,22 +1027,42 @@
           </div>
         </div>
       </div>
+
+      <!-- MOCKUP: pilha dos 5 volumes (colocado em baixo do texto no mobile) -->
+      <div class="stack" aria-label="Os 5 volumes do kit">
+        <div class="stack-inner">
+          <div class="vol v1" role="img" aria-label="Volume 1 — Primeiros Passos na Areia"></div>
+          <div class="vol v2" role="img" aria-label="Volume 2 — Construindo o Jogo"></div>
+          <div class="vol v3" role="img" aria-label="Volume 3 — Dominando a Quadra"></div>
+          <div class="vol v4" role="img" aria-label="Volume 4 — Alto Nível"></div>
+          <div class="vol v5" role="img" aria-label="Volume 5 — Mentalidade de Competição"></div>
+          <div class="stack-badge">200 treinos</div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
+
+<!-- ================= 1.2 PONTE NARRATIVA ================= -->
+<section class="narrative-bridge">
+  <div class="narrative-content">
+    <div class="narrative-quote">"Eles não reclamam. Eles simplesmente não voltam mais."</div>
+    <div class="narrative-text">
+      O maior erro de um professor de Beach Tennis é achar que os alunos estão saindo por falta de técnica sua. Não é isso. Eles saem porque o ser humano odeia tédio. Se a sua aula repete os mesmos padrões toda semana por falta de tempo para planejar, o seu aluno vai procurar quem entrega variedade.
+    </div>
+  </div>
+</section>
 
 <!-- ================= 2. DOR ================= -->
 <section class="pain" data-screen-label="Dor">
   <div class="wrap narrow">
     <h2>Se Você é Professor de Beach Tennis, Isso Vai Soar Familiar...</h2>
     <div class="pain-list">
-      <div class="pain-item"><span class="x">✕</span><p>Você perde <b>de 1 a 3 horas toda semana</b> montando treino do zero — tempo que poderia usar descansando ou atendendo mais alunos.</p></div>
-      <div class="pain-item"><span class="x">✕</span><p>Seus alunos percebem quando o treino é <b>sempre o mesmo</b> — e começam a desengajar e faltar.</p></div>
-      <div class="pain-item"><span class="x">✕</span><p>Você não tem uma <b>progressão clara</b> para evoluir um aluno do iniciante ao intermediário — acaba improvisando.</p></div>
-      <div class="pain-item"><span class="x">✕</span><p>Tem dia que você chega na quadra <b>sem um plano definido</b> e repete o que já fez na semana passada.</p></div>
-      <div class="pain-item"><span class="x">✕</span><p>Você sente que poderia <b>cobrar mais caro</b> pelas aulas se tivesse um método mais estruturado e perceptível para os alunos.</p></div>
+      <div class="pain-item"><span class="x">✕</span><p>A frustração velada de ver alunos desengajando e faltando porque sentem que a aula virou "mais do mesmo".</p></div>
+      <div class="pain-item"><span class="x">✕</span><p>O peso no peito de chegar na quadra cansado e ter que improvisar o treino na hora, sabendo que você poderia entregar mais.</p></div>
+      <div class="pain-item"><span class="x">✕</span><p>A insegurança de não saber como justificar um aumento no valor da sua hora-aula por falta de um método visualmente estruturado.</p></div>
     </div>
-    <p class="pain-transition">Não é falta de conhecimento — é falta de <b>tempo e de um material pronto</b> para organizar tudo isso. Foi exatamente para resolver isso que esse kit foi criado.</p>
+    <p class="pain-transition">O problema nunca foi a sua capacidade como treinador. Foi a falta de uma ferramenta que fizesse o trabalho pesado de planejamento por você. Até agora.</p>
   </div>
 </section>
 
@@ -1018,9 +1081,7 @@
         <img class="vol-cover" src="img/v1.jpg" alt="Volume 1 — Primeiros Passos na Areia" loading="lazy" />
         <div class="vol-body">
           <ul>
-            <li>Alunos pegando o jogo desde a primeira aula — sem você ter que reexplicar o básico toda vez.</li>
-            <li>Treinos de fundamento que prendem a atenção de quem nunca tocou na raquete.</li>
-            <li>Base sólida pronta, para a turma evoluir rápido sem frustração.</li>
+            <li><b>A primeira impressão perfeita.</b> Faça o aluno iniciante se apaixonar pelo esporte na primeira aula e garantir a mensalidade do próximo mês imediatamente.</li>
           </ul>
           <div class="vol-foot"><span class="count">40 treinos completos</span><span class="price">Valor: R$27</span></div>
         </div>
@@ -1030,9 +1091,7 @@
         <img class="vol-cover" src="img/v2.jpg" alt="Volume 2 — Construindo o Jogo" loading="lazy" />
         <div class="vol-body">
           <ul>
-            <li>A ponte que faltava entre o iniciante travado e o aluno que já troca bola.</li>
-            <li>Treinos de posicionamento e ritmo que deixam o jogo do aluno mais consistente.</li>
-            <li>Sequências variadas para a turma nunca sentir que está repetindo.</li>
+            <li><b>Acabe com o tédio das turmas mistas.</b> Sequências táticas e dinâmicas de posicionamento que geram aquele sentimento de "caramba, a aula passou voando!".</li>
           </ul>
           <div class="vol-foot"><span class="count">40 treinos completos</span><span class="price">Valor: R$27</span></div>
         </div>
@@ -1042,9 +1101,7 @@
         <img class="vol-cover" src="img/v3.jpg" alt="Volume 3 — Dominando a Quadra" loading="lazy" />
         <div class="vol-body">
           <ul>
-            <li>Treinos de jogada construída para o aluno que já quer ganhar ponto, não só devolver.</li>
-            <li>Trabalho de defesa, ataque e transição — aplicável tanto em dupla quanto individual.</li>
-            <li>Estrutura clara para você mostrar evolução visível à turma a cada semana.</li>
+            <li><b>Acabe com o tédio das turmas mistas.</b> Sequências táticas e dinâmicas de posicionamento que geram aquele sentimento de "caramba, a aula passou voando!".</li>
           </ul>
           <div class="vol-foot"><span class="count">40 treinos completos</span><span class="price">Valor: R$27</span></div>
         </div>
@@ -1054,9 +1111,7 @@
         <img class="vol-cover" src="img/v4.jpg" alt="Volume 4 — Alto Nível" loading="lazy" />
         <div class="vol-body">
           <ul>
-            <li>Treinos intensos para alunos que jogam torneio e cobram resultado de você.</li>
-            <li>Padrões de jogo e leitura de quadra que separam o avançado do intermediário.</li>
-            <li>Conteúdo que justifica cobrar mais caro pela aula de alto rendimento.</li>
+            <li><b>Gere autoridade e respeito.</b> Treinos intensos de leitura de quadra e padrões europeus que farão os alunos de torneio verem você não apenas como um professor, mas como um técnico de elite.</li>
           </ul>
           <div class="vol-foot"><span class="count">40 treinos completos</span><span class="price">Valor: R$27</span></div>
         </div>
@@ -1066,9 +1121,7 @@
         <img class="vol-cover" src="img/v5.jpg" alt="Volume 5 — Mentalidade de Competição" loading="lazy" />
         <div class="vol-body">
           <ul>
-            <li>Treinos sob pressão que preparam o aluno para o jogo que vale ponto de verdade.</li>
-            <li>Trabalho tático e mental para fechar partidas equilibradas com cabeça fria.</li>
-            <li>O diferencial que transforma seu aluno num competidor — e você num técnico de resultado.</li>
+            <li><b>Gere autoridade e respeito.</b> Treinos intensos de leitura de quadra e padrões europeus que farão os alunos de torneio verem você não apenas como um professor, mas como um técnico de elite.</li>
           </ul>
           <div class="vol-foot"><span class="count">40 treinos completos</span><span class="price">Valor: R$27</span></div>
         </div>
@@ -1137,6 +1190,20 @@
   </div>
 </section>
 
+<!-- ================= 7. GARANTIA ================= -->
+<section class="guarantee" data-screen-label="Garantia">
+  <div class="wrap">
+    <div class="seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span class="d">7 dias</span>
+      <span class="l">Garantia</span>
+    </div>
+    <h2>Risco Zero Para Você</h2>
+    <p>Use o material por 7 dias. Se por qualquer motivo você achar que não é para você, é só pedir o reembolso e devolvemos 100% do valor — sem perguntas, sem burocracia.</p>
+    <p class="punch">Você não tem nada a perder — e 200 treinos a ganhar.</p>
+  </div>
+</section>
+
 <!-- ================= 6. PLANOS E PREÇOS ================= -->
 <section class="offer" id="precos" data-screen-label="Oferta">
   <div class="wrap">
@@ -1147,7 +1214,75 @@
     </div>
     
     <div class="plans-container">
-      <!-- PLAN 1: PACOTE SIMPLES -->
+      <!-- PLAN 1: PACOTE COMPLETO -->
+      <article class="plan-card popular">
+        <div class="popular-badge">O Mais Recomendado</div>
+        <h3 class="plan-name">PACOTE COMPLETO</h3>
+        <p class="plan-desc">O kit definitivo do professor de elite com bônus e atualizações.</p>
+        
+        <div class="plan-price-box">
+          <p style="font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45; margin-bottom: 16px; font-weight: 500; text-align: center; padding-inline: 8px;">
+            Um único aluno que desiste da sua turma custa mais de R$ 150,00 por mês para o seu bolso. Garanta o kit completo hoje por menos do que o valor de um tubo de bolinhas.
+          </p>
+          <span class="plan-price-was">De R$ 124,90 por apenas</span>
+          <span class="plan-price-now"><small>R$</small>24<small>,90</small></span>
+        </div>
+        
+        <ul class="plan-features">
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Todos os 5 volumes originais</b> (200 treinos)</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Planilha de Planejamento Semanal</b></span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
+            <span><b>Acesso vitalício</b> aos arquivos</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 1</b> - Guia de correção (30 Erros Técnicos)</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 2</b> - 30 Exercícios com Cesto de Bolas</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 3</b> - Plano de 30 Dias para Iniciantes</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 4</b> - Guia da Aula Experimental Perfeita</span>
+          </li>
+          <li class="plan-feature-item highlight">
+            <span class="plan-feature-icon">🎁</span>
+            <span><b>Bônus 5</b> - Fichas de Avaliação Imprimíveis</span>
+          </li>
+          <li class="plan-feature-item bonus-feat">
+            <span class="plan-feature-icon">⭐</span>
+            <span><b>Atualizações mensais</b> inclusas</span>
+          </li>
+        </ul>
+        
+        <a href="https://pay.wiapy.com/XZbu1wrzIt" class="btn btn-orange pulse">Adquirir Kit + Bônus por R$ 24,90</a>
+
+        <!-- Secure/Instant badges matching the user screenshot -->
+        <div class="plans-secure-row">
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+            <span>SEGURO</span>
+          </div>
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>INSTANTÂNEO</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PLAN 2: PACOTE SIMPLES -->
       <article class="plan-card">
         <h3 class="plan-name">PACOTE SIMPLES</h3>
         <p class="plan-desc">O essencial para parar de improvisar na areia e economizar tempo.</p>
@@ -1193,77 +1328,24 @@
         </ul>
         
         <a href="https://pay.wiapy.com/nOAteXXYq8" class="btn btn-orange">Adquirir Pacote Simples</a>
-      </article>
 
-      <!-- PLAN 2: PACOTE COMPLETO -->
-      <article class="plan-card popular">
-        <div class="popular-badge">O Mais Recomendado</div>
-        <h3 class="plan-name">PACOTE COMPLETO</h3>
-        <p class="plan-desc">O kit definitivo do professor de elite com bônus e atualizações.</p>
-        
-        <div class="plan-price-box">
-          <span class="plan-price-was">De R$ 124,90 por apenas</span>
-          <span class="plan-price-now"><small>R$</small>24<small>,90</small></span>
+        <!-- Secure/Instant badges matching the user screenshot -->
+        <div class="plans-secure-row">
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+            <span>SEGURO</span>
+          </div>
+          <div class="plans-secure-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A79" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>INSTANTÂNEO</span>
+          </div>
         </div>
-        
-        <ul class="plan-features">
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span><b>Todos os 5 volumes originais</b> (200 treinos)</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span><b>Planilha de Planejamento Semanal</b></span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon" style="color:var(--green)">✓</span>
-            <span><b>Acesso vitalício</b> aos arquivos</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon">🎁</span>
-            <span><b>Bônus 1</b> - Guia de correção (30 Erros Técnicos)</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon">🎁</span>
-            <span><b>Bônus 2</b> - 30 Exercícios com Cesto de Bolas</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon">🎁</span>
-            <span><b>Bônus 3</b> - Plano de 30 Dias para Iniciantes</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon">🎁</span>
-            <span><b>Bônus 4</b> - Guia da Aula Experimental Perfeita</span>
-          </li>
-          <li class="plan-feature-item highlight">
-            <span class="plan-feature-icon">🎁</span>
-            <span><b>Bônus 5</b> - Fichas de Avaliação Imprimíveis</span>
-          </li>
-          <li class="plan-feature-item bonus-feat">
-            <span class="plan-feature-icon">⭐</span>
-            <span><b>Atualizações mensais</b> inclusas</span>
-          </li>
-        </ul>
-        
-        <a href="https://pay.wiapy.com/XZbu1wrzIt" class="btn btn-orange pulse">Adquirir Pacote Completo</a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= 7. GARANTIA ================= -->
-<section class="guarantee" data-screen-label="Garantia">
-  <div class="wrap">
-    <div class="seal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
-      <span class="d">7 dias</span>
-      <span class="l">Garantia</span>
-    </div>
-    <h2>Risco Zero Para Você</h2>
-    <p>Use o material por 7 dias. Se por qualquer motivo você achar que não é para você, é só pedir o reembolso e devolvemos 100% do valor — sem perguntas, sem burocracia.</p>
-    <p class="punch">Você não tem nada a perder — e 200 treinos a ganhar.</p>
-  </div>
-</section>
+
 
 <!-- ================= 8. FAQ ================= -->
 <section class="faq" data-screen-label="FAQ">
@@ -1302,7 +1384,7 @@
 <!-- ================= 9. CTA FINAL ================= -->
 <section class="final" data-screen-label="CTA Final">
   <div class="wrap">
-    <h2>200 Treinos Prontos. R$10. Acesso Agora.</h2>
+    <h2>200 Treinos Prontos. R$10. Acesse agora.</h2>
     <p>5 volumes do iniciante ao avançado, mais 2 planilhas profissionais de bônus. Pare de improvisar e economize horas de planejamento toda semana.</p>
     <div class="btn-wrap">
       <a href="#precos" class="btn btn-white">Garantir Meu Kit Agora</a>
